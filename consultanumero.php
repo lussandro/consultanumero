@@ -9,11 +9,21 @@
         require('phpagi.php');
 	$agi = new AGI();
 	$numero = $argv[1];
-        $token = 'INSIRA O SEU TOKEN AQUI';
+        $token = 'INSIRA SEU TOKE AQUI';
         $usuario_mysql = 'snep';
         $senha_mysql = 'sneppass';
         $banco_mysql = 'portabilidade';
         $conta = 99 ;
+
+        # Validação do numero:
+        if( !( isset($numero) && is_numeric($numero) && $numero[1]>1100000000 && $numero[1]<99999999999 ) ){
+	$rn1 = '99999';
+	$agi->verbose("*** NUMERO INVALIDO *** ");
+	$agi->set_variable("RN1", $rn1);
+
+                die();
+        }
+
 
         $id = mysql_connect('localhost',$usuario_mysql, $senha_mysql);
         $con=mysql_select_db($banco_mysql ,$id);
