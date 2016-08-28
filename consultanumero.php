@@ -16,7 +16,7 @@
         $conta = 99 ;
 
         # Validação do numero:
-        if( !( isset($numero) && is_numeric($numero) && $numero[1]>1100000000 && $numero[1]<99999999999 ) ){
+        if( !( isset($numero) && is_numeric($numero) && $numero>1100000000 && $numero<99999999999 ) ){
 	$rn1 = '99999';
 	$agi->verbose("*** NUMERO INVALIDO *** ");
 	$agi->set_variable("RN1", $rn1);
